@@ -21,18 +21,39 @@ import javax.servlet.RequestDispatcher;
  */
 public class Login extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
+        response.setContentType("text/html");
         String email = request.getParameter("email");
         String password = request.getParameter("pass");
+        String usertype = request.getParameter("usertype");
         
         PrintWriter out = response.getWriter();
-        out.println(email+""+password);
+       // out.println(email+""+password);
+        //out.println(usertype);
         
         try {
             LoginDAO l = new LoginDAO();
-            String result = l.checkInfo(email, password);
-            out.println(result);
+            String result = l.checkInfo(email, password,usertype);
+            out.println("Invalid Login Details");
+            if(result.equals("admin"))
+            {
+               //RequestDispatcher rd= request.getRequestDispatcher("admin_home.html");
+               // rd.forward(request,response);
+                response.sendRedirect("admin_home.html");
+            }
+            else if(result.equals("Login successfull"))
+            {
+//                RequestDispatcher rd= request.getRequestDispatcher("home.html");
+//                rd.forward(request,response);
+                response.sendRedirect("student_home.html");
+            }
+            else
+            {
+                RequestDispatcher rd= request.getRequestDispatcher("index.html");
+                rd.include(request,response);
+            }
+          
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

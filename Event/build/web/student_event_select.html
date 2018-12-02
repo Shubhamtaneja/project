@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student_event_select</title>
+ 
+    
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="student_event_select/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="student_event_select/css/style.css">
+</head>
+<body>
+
+    <div class="main">
+
+        <div class="container">
+            <form method="POST" class="appointment-form" id="appointment-form">
+                <h2>Event Application form</h2>
+                <div class="form-group-1">
+                    <input type="text" name="title" id="title" placeholder="University Id" required />
+                    <input type="text" name="name" id="name" placeholder="Your Name" required />
+                    <input type="email" name="email" id="email" placeholder="Email" required />
+            
+                    <div class="select-list">
+                        <select name="course_type" id="course_type">
+                            <option selected value="">Course Type</option>
+                            <option value="society">Society</option>
+                            <option value="language">Language</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group-2">
+                    <h3>Fill Details</h3>
+                   <input type="number" name="phoneno" id="phoneno" placeholder="Your Phone No" required />
+                   <input type="number" name="whatsappno" id="whatsappno" placeholder="Your Whatsapp No" required />
+                    
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                    <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree to the  <a href="#" class="term-service">Terms and Conditions</a></label>
+                </div>
+                <div class="form-submit">
+                    <input type="submit" name="submit" id="submit" class="submit" value="Request An Application" />
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="student_event_select/vendor/jquery/jquery.min.js"></script>
+    <script src="student_event_select/js/main.js"></script>
+</body>
+</html>

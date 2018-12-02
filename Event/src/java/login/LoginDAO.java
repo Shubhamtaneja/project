@@ -4,15 +4,13 @@
  * and open the template in the editor.
  */
 package login;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 /**
- *
+ * 
  * @author Shubham Taneja
  */
 public class LoginDAO {
@@ -32,20 +30,37 @@ public class LoginDAO {
         this.st=con.createStatement();
     }
    
-    public String checkInfo(String email,String password) throws SQLException
+    public String checkInfo(String email,String password,String usertype) throws SQLException
     {
-         String query="Select * from login where email='"+email+"' and password ='"+password+"'";
-        ResultSet rs=st.executeQuery(query);
-        while(rs.next())
+         //String admin="Select * from login where email='"+email+"' and password ='"+password+"'";
+        if(usertype.equals("admin"))
         {
-            return "Login successfull";
+            String query="Select * from login where email='"+email+"' and password ='"+password+"'";
+        
+        ResultSet rs=st.executeQuery(query);
+                while(rs.next())
+                {
+                    return "admin";
+                }
         }
+        else if(usertype.equals("student"))
+        {
+            String query="Select * from loginstudent where email='"+email+"' and password ='"+password+"'";
+        
+        ResultSet rs=st.executeQuery(query);
+                while(rs.next())
+                {
+                     return "Login successfull";
+                }
+        }
+        
+        
         return "invalid login details";
     }
     public static void main(String[] args) throws ClassNotFoundException, SQLException
     {
         LoginDAO l = new LoginDAO();
-        String result = l.checkInfo("shubham@gmail.com", "password");
+        String result = l.checkInfo("shubham@gmail.com", "password","admin");
         System.out.println(result);
     }
     

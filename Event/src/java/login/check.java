@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author dell
+ * @author hp
  */
 public class check extends HttpServlet {
     public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException
@@ -25,13 +25,15 @@ public class check extends HttpServlet {
          res.setContentType("text/html;charset=UTF-8");
         PrintWriter out = res.getWriter();
         String id = req.getParameter("sname");
+        int sid = Integer.parseInt(req.getParameter("sid"));
+        String usertype=req.getParameter("usertype");
         String fname=req.getParameter("semail");
         String lname=req.getParameter("susername");
         String pass = req.getParameter("spass");
         
          RecordCheck rs = new RecordCheck();
         try {
-            rs.insert(id, fname, lname, pass);
+            rs.insert(id, sid, usertype, fname, lname, pass);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(check.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

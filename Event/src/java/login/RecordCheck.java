@@ -11,21 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
  * @author dell
  */
 public class RecordCheck {
     
-    public void insert(String id,String first,String last,String pass) throws ClassNotFoundException, SQLException, IOException
+    public void insert(String id,int sid,String usertype,String first,String last,String pass) throws ClassNotFoundException, SQLException, IOException
     {
          
         Class.forName("com.mysql.jdbc.Driver");  
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/event","root","");  
-        PreparedStatement ps = con.prepareStatement("insert into login values(?,?,?,?)");
+        PreparedStatement ps = con.prepareStatement("insert into loginstudent values(?,?,?,?,?,?)");
         ps.setString(1, id);
-        ps.setString(2, first);
-        ps.setString(3, last);
-        ps.setString(4,pass);
+        ps.setInt(2, sid);
+        ps.setString(3, usertype);
+        ps.setString(4, first);
+        ps.setString(5, last);
+        ps.setString(6,pass);
         int rs=ps.executeUpdate();
     }    
 }

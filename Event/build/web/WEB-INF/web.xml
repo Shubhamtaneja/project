@@ -12,6 +12,18 @@
         <servlet-name>RecordCheck</servlet-name>
         <servlet-class>login.RecordCheck</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>checkevent</servlet-name>
+        <servlet-class>login.checkevent</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>file</servlet-name>
+        <servlet-class>login.file</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UploadServlet</servlet-name>
+        <servlet-class>login.UploadServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -23,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>RecordCheck</servlet-name>
         <url-pattern>/RecordCheck</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkevent</servlet-name>
+        <url-pattern>/checkevent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>file</servlet-name>
+        <url-pattern>/file</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadServlet</servlet-name>
+        <url-pattern>/UploadServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
